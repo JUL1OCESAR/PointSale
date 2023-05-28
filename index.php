@@ -1,5 +1,5 @@
 <?php
-    require_once "../controlador/plantilla.controlador.php";
+    require_once "controlador/plantilla_controlador.php";
     $plantilla = new PlantillaControlador();
     $plantilla->CargarPlantilla();
 ?>
