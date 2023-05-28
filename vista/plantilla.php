@@ -14,11 +14,16 @@
         <!-- Theme style -->
         <link rel="stylesheet" href="vista/assets/dist/css/adminlte.min.css">
         <!-- jQuery -->
+
+        <link rel="stylesheet" href="vista/assets/dist/css/style.css">
+
         <script src="vista/assets/plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
         <script src="vista/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="vista/assets/dist/js/adminlte.min.js"></script>
+        <link rel="stylesheet" href="/vista/assets/dist/css/style.css">
+
     </head>
 
     <body class="hold-transition sidebar-mini">

@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['id'])) {
-        header("Location: login.php");
+        header("Location: vista/login.php");
     }
     $nombre = $_SESSION['nombre'];
     $tipo_usuario = $_SESSION['tipo_usuario'];
@@ -43,7 +43,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="logout.php" class="nav-link">
+                                <a href="controlador/logout.php" class="nav-link">
                                     <p>Log out</p>
                                 </a>
                             </li>
@@ -101,7 +101,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a style ="cursor: pointer;" href="#" class="nav-link" onclick="CargarContenido('vista/dashboard.php', 'content-wrapper')">
+                    <a style ="cursor: pointer;" href="#" class="nav-link" onclick="CargarContenido('vista/prueba.php', 'content-wrapper')">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Reportes
