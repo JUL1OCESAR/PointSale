@@ -1,0 +1,285 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  margin-top: 20px;
+}
+
+.content-header {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.content-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb .breadcrumb-item {
+  font-size: 14px;
+}
+
+.breadcrumb .breadcrumb-item a {
+  color: #6c757d;
+}
+
+.breadcrumb .breadcrumb-item.active {
+  color: #343a40;
+}
+
+.users-form {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.users-form h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.users-form form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.users-form input[type="text"],
+.users-form input[type="password"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.users-form button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 150px;
+}
+
+.users-form button:hover {
+  background-color: #45a049;
+}
+
+.users-table {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.users-table h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.users-table a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.users-table a:hover {
+  background-color: #45a049;
+}
+
+.users-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  padding: 12px;
+  text-align: center;
+}
+
+.users-table thead tr {
+  background-color: #f2f2f2;
+}
+
+.users-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.users-table--edit,
+.users-table--delete {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #428bca;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+}
+
+.users-table--edit:hover,
+.users-table--delete:hover {
+  background-color: #3276b1;
+}
+
+/* FLOTANTE */
+#openModalButton {
+    padding: 8px 16px;
+    background-color: #3639f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 50%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.users-form {
+  text-align: center;
+}
+
+.users-form h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.users-form form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.users-form input[type="text"],
+.users-form input[type="password"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.users-form button {
+  padding: 8px 16px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 150px;
+}
+
+.users-form button:hover {
+  background-color: #d32f2f;
+}
+
+/* VENTANA EDITAR */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 9999;
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.popup input,
+.popup button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.popup button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+}
+
+.popup button:last-child {
+  background-color: #f44336;
+}
+

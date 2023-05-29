@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="vista/assets/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="vista/assets/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="vista/assets/dist/css/style.css">
+    <link rel="stylesheet" href="vista/assets/dist/css/stylecrud.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -33,6 +33,7 @@
     <script src="vista/assets/plugins/jquery/jquery.min.js"></script>
     <script src="vista/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vista/assets/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         function CargarContenido(pagina_php, contenedor) {
             $("." + contenedor).load(pagina_php);

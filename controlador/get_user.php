@@ -13,8 +13,8 @@
         echo "<td class=\"user-name\">" . $row['nombre'] . "</td>";
         echo "<td class=\"user-lastname\">" . $row['apellido'] . "</td>";
         echo "<td class=\"user-type\">" . $row['tipo_usuario'] . "</td>";
-        echo "<td class=\"user-edit\"><a href=\"controlador/update.php?id=" . $row['id'] . "\" class=\"users-table--edit\">Editar</a></td>";
-        echo "<td class=\"user-delete\"><button type=\"button\" onclick=\"submitData(" . $row['id'] . ");\">Eliminar</button></td>";
+        echo "<td class=\"user-edit\"><a href=\"#" . $row['id'] . "\" class=\"users-table--edit\">Editar</a></td>";
+        echo "<td class=\"user-delete\"><a ref=\"#\" onclick=\"submitData(" . $row['id'] . ");\">Eliminar</a></td>";
         echo "</tr>";
     }
 ?>
