@@ -6,6 +6,7 @@
             insert();
         }
     }
+
     function insert(){
         $con = connection();
 
@@ -16,8 +17,15 @@
         $apellido = $_POST["apellido"];
         $tipo_usuario = $_POST["tipo_usuario"];
 
-        $sql = "INSERT INTO usuarios VALUES('$id','$usuario','$password','$nombre','$apellido','$tipo_usuario')";
-        mysqli_query($con, $sql);
-        echo "Inserción Exitosa";
+        // Realizar validaciones u otras operaciones antes de la inserción
+
+        $sql = "INSERT INTO usuarios (usuario, password, nombre, apellido, tipo_usuario) 
+                VALUES ('$usuario', '$password', '$nombre', '$apellido', '$tipo_usuario')";
+        
+        if(mysqli_query($con, $sql)){
+            echo "Inserción Exitosa";
+        } else {
+            echo "Error en la inserción: " . mysqli_error($con);
+        }
     }
 ?>

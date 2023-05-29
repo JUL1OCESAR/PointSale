@@ -1,101 +1,129 @@
-* {
-    box-sizing: border-box;
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-html {
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
+.container-fluid {
+    margin-top: 20px;
 }
 
-a{
-    text-decoration: none;
+/* Content Header Styles */
+.content-header {
+    background-color: #f8f9fa;
+    padding: 20px;
 }
 
-.users-form form{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 30%;
-    margin: 20px auto;
-    text-align: center;
+.content-header h1 {
+    font-size: 24px;
+    margin: 0;
 }
 
-.users-form form input{
-    font-family: 'Segoe UI', sans-serif;
+.breadcrumb {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
 }
 
-.users-form form input[type=text],
-.users-form form input[type=password],
-.users-form form input[type=email]{
+.breadcrumb .breadcrumb-item {
+    font-size: 14px;
+}
+
+.breadcrumb .breadcrumb-item a {
+    color: #6c757d;
+}
+
+.breadcrumb .breadcrumb-item.active {
+    color: #343a40;
+}
+
+/* Users Form Styles */
+.users-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.users-form h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.users-form form {
+    margin-top: 10px;
+}
+
+.users-form input[type="text"],
+.users-form input[type="password"] {
     padding: 8px;
-    border:2px solid #aaa;
-    border-radius:4px;
-    outline:none;
-    transition:.3s;
-}
-
-.users-form form input[type=text]:focus,
-.users-form form input[type=password]:focus,
-.users-form form input[type=password]:focus{
-    border-color:dodgerBlue;
-    box-shadow:0 0 6px 0 dodgerBlue;
-}
-
-.users-form form input[type=submit]{
-    border: none;
-    padding: 12px 50px;
-    text-decoration: none;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: white; 
-    color: black; 
-    border: 2px solid #60a100;
-}
-
-.users-form form input[type=submit]:hover {
-    background-color: #60a100;
-    color: white;
-}
-
-.users-table table{
     border: 1px solid #ccc;
-    border-collapse: collapse;
-    margin: 0;
-    padding: 0;
+    border-radius: 4px;
     width: 100%;
-    table-layout: fixed;
+    margin-bottom: 10px;
 }
 
-table tr {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    padding: 4px;
+.users-form button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-table th{
-    padding: 16px;
-    text-align: center;
-    font-size: .85em;
+/* Users Table Styles */
+.users-table {
+    margin-top: 20px;
 }
 
-.users-table--edit{
-    background: #009688;
-    padding: 6px;
-    color: #fff;
-    text-align: center;
-    font-weight: bold;
-}
-.users-table--delete{
-    background: #b11e1e;
-    padding: 6px;
-    color: #fff;
-    text-align: center;
-    font-weight: bold;
+.users-table h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
+.users-table a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
 
+.users-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
+.users-table th,
+.users-table td {
+    padding: 12px;
+    text-align: left;
+}
 
+.users-table thead tr {
+    background-color: #f2f2f2;
+}
+
+.users-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.users-table--edit,
+.users-table--delete {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #428bca;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.users-table--edit:hover,
+.users-table--delete:hover {
+    background-color: #3276b1;
+}

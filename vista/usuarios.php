@@ -23,19 +23,19 @@
             <!-- /.col -->
             <div class="users-form">
                 <h1>Crear usuario</h1>
-                <form autocomplete="off" action="" method="post">
+                <form autocomplete="off" id="crudUser" action="" method="post">
                     <input type="text" id="usuario" placeholder="Username">
                     <input type="password" id="password" placeholder="Password">
                     <input type="text" id="nombre" placeholder="Nombre">
                     <input type="text" id="apellido" placeholder="Apellido">
                     <input type="text" id="tipo_usuario" placeholder="Tipo de Usuario">
-                    <button type="button" onclick="submitData('insert');">Confirmar</button>
+                    <button type="button" onclick="enviarFormulario();">Confirmar</button>
                 </form>
                 <?php require "../controlador/crud_script.php"; ?>
             </div>
-
             <div class="users-table">
                 <h2>Usuarios registrados</h2>
+                <a href="newuser.php">Nuevo</a>
                 <table>
                     <thead>
                         <tr>
@@ -49,34 +49,21 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="CargaUser">
                         <?php while ($row = mysqli_fetch_array($query)): ?>
                             <tr>
-                                <th>
-                                    <?= $row['id'] ?>
-                                </th>
-                                <th>
-                                    <?= $row['usuario'] ?>
-                                </th>
-                                <th>
-                                    <?= $row['password'] ?>
-                                </th>
-                                <th>
-                                    <?= $row['nombre'] ?>
-                                </th>
-                                <th>
-                                    <?= $row['apellido'] ?>
-                                </th>
-                                <th>
-                                    <?= $row['tipo_usuario'] ?>
-                                </th>
-                                <th><a href="controlador/update.php?id=<?= $row['id'] ?>" class="users-table--edit">Editar</a></th>
-                                <th><a href="controlador/delete_user.php?id=<?= $row['id'] ?>" class="users-table--delete">Eliminar</a>
-                                </th>
+                                <td class="user-id"><?= $row['id'] ?></td>
+                                <td class="user-username"><?= $row['usuario'] ?></td>
+                                <td class="user-password"><?= $row['password'] ?></td>
+                                <td class="user-name"><?= $row['nombre'] ?></td>
+                                <td class="user-lastname"><?= $row['apellido'] ?></td>
+                                <td class="user-type"><?= $row['tipo_usuario'] ?></td>
+                                <td class="user-edit"><a href="controlador/update.php?id=<?= $row['id'] ?>" class="users-table--edit">Editar</a></td>
+                                <td class="user-delete"><button type="button" onclick="submitData(<?= $row['id'] ?>);">Eliminar</button></td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
-                </table>
+                </table>                
             </div>
         </div>
         <!-- /.row -->
