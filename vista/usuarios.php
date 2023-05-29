@@ -35,14 +35,14 @@
                 </div>
             </div>
             <script> 
-                // Open the modal
+                // Abrir Modelo
                 var openModalButton = document.getElementById("openModalButton");
                 openModalButton.addEventListener("click", function() {
                 var modal = document.getElementById("myModal");
                 modal.style.display = "block";
                 });
 
-                // Close the modal
+                // Cerrar Modelo
                 var closeButtons = document.getElementsByClassName("close");
                 for (var i = 0; i < closeButtons.length; i++) {
                 closeButtons[i].addEventListener("click", function() {
@@ -50,8 +50,7 @@
                     modal.style.display = "none";
                 });
                 }
-
-                // Close the modal when clicking outside of it
+                // Evento click fuera del form
                 window.addEventListener("click", function(event) {
                 var modal = document.getElementById("myModal");
                 if (event.target == modal) {
@@ -128,11 +127,6 @@
                         var nombre = document.getElementById("editNombre").value;
                         var apellido = document.getElementById("editApellido").value;
                         var tipoUsuario = document.getElementById("editTipoUsuario").value;
-
-                        // Aquí puedes hacer la llamada Ajax para guardar los cambios
-                        // Puedes utilizar la librería Axios o cualquier otra de tu preferencia
-                        // y enviar los datos al servidor para guardarlos
-
                         cerrarPopup();
                     }
 
@@ -141,9 +135,6 @@
                     }
 
                     function eliminarUsuario(id) {
-                        // Aquí puedes hacer la llamada Ajax para eliminar el usuario
-                        // Puedes utilizar la librería Axios o cualquier otra de tu preferencia
-                        // y enviar la solicitud al servidor para eliminar el usuario
                     }
                 </script>  
                 <script>
