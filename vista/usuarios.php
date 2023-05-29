@@ -23,14 +23,15 @@
             <!-- /.col -->
             <div class="users-form">
                 <h1>Crear usuario</h1>
-                <form action="controlador/insert_user.php" method="POST">
-                    <input type="text" name="usuario" placeholder="Username">
-                    <input type="password" name="password" placeholder="Password">
-                    <input type="text" name="nombre" placeholder="Nombre">
-                    <input type="text" name="lastname" placeholder="Apellido">
-                    <input type="text" name="tipo_usuario" placeholder="Tipo de Usuario">
-                    <input type="submit" value="Agregar">
+                <form autocomplete="off" action="" method="post">
+                    <input type="text" id="usuario" placeholder="Username">
+                    <input type="password" id="password" placeholder="Password">
+                    <input type="text" id="nombre" placeholder="Nombre">
+                    <input type="text" id="apellido" placeholder="Apellido">
+                    <input type="text" id="tipo_usuario" placeholder="Tipo de Usuario">
+                    <button type="button" onclick="submitData('insert');">Confirmar</button>
                 </form>
+                <?php require "../controlador/crud_script.php"; ?>
             </div>
 
             <div class="users-table">
