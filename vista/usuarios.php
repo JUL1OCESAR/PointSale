@@ -31,7 +31,7 @@
                         <button type="button" onclick="enviarFormulario();">Confirmar</button>
                     </form>
                     <?php require "../controlador/crud_script.php"; ?>
-                    </div>
+                    </div>sdasd
                 </div>
             </div>
             <script> 
