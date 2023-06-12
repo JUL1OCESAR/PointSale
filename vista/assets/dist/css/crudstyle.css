@@ -1,0 +1,230 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  margin-top: 20px;
+}
+
+.content-header {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.content-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.user-form {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.user-form h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.user-form form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-form input[type="text"],
+.user-form input[type="password"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.user-form button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 150px;
+}
+
+.user-form button:hover {
+  background-color: #45a049;
+}
+
+.user-table {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.user-table h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.user-table a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.user-table a:hover {
+  background-color: #45a049;
+}
+
+.user-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px;
+  text-align: center;
+}
+
+.user-table thead tr {
+  background-color: #f2f2f2;
+}
+
+.user-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.user-table--edit,
+.user-table--delete {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #428bca;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+}
+
+.user-table--edit:hover,
+.user-table--delete:hover {
+  background-color: #3276b1;
+}
+
+/* FLOTANTE */
+#openCreateButton {
+    padding: 8px 16px;
+    background-color: #3639f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 50%;
+}
+
+/* VENTANA EDITAR */
+.editPopup {
+  display: none;
+  position: fixed;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  }
+
+/* ESTILO DE CONTENIDO DE FORM */
+.modelCreate {
+  display: none;
+  position: fixed;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.user-form {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.user-content {
+  text-align: center;
+}
+
+.user-content h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.user-content form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-content input[type="text"],
+.user-content input[type="password"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.user-content button {
+  padding: 8px 16px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 150px;
+}
+
+.user-content button:hover {
+  background-color: #d32f2f;
+}

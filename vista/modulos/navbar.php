@@ -1,6 +1,6 @@
-<!-- Navbar -->
+<!-- Barra de navegación -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
+    <!-- Enlaces de navegación -->
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -12,7 +12,7 @@
             <a href="#" class="nav-link">Inventario</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Categorias</a>
+            <a href="#" class="nav-link">Categorías</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Ventas</a>

@@ -1,32 +1,36 @@
 <?php
+    // Inicia una sesión
     session_start();
+
+    // Redirecciona al usuario a la página de inicio de sesión si no existe la variable de sesión 'id'
     if (!isset($_SESSION['id'])) {
-        header("Location: vista/login.php");
+        header("Location: vista/login.php"); 
     }
-    $nombre = $_SESSION['nombre'];
+
+    // Obtiene el valor de la variable de sesión 'nombre' y 'tipo_usuario' y lo asigna a su variable local
+    $nombre = $_SESSION['nombre']; 
     $tipo_usuario = $_SESSION['tipo_usuario'];
 ?>
 
-<!-- Main Sidebar Container -->
+<!-- Contenedor de la barra lateral principal -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-    <!-- Brand Logo -->
+    <!-- Logotipo de la marca -->
     <a href="index3.html" class="brand-link">
         <img src="vista/assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
         <span class="brand-text font-weight-light">Market Rosita</span>
     </a>
 
-    <!-- Sidebar -->
+    <!-- Barra lateral -->
     <div class="sidebar">
 
-        <!-- Sidebar Menu -->
+        <!-- Menú de la barra lateral -->
         <nav class="mt-2">
 
-            <!-- Usuario Promedio -->
+            <!-- Usuario promedio -->
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
                 
-                <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
@@ -44,7 +48,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="controlador/logout.php" class="nav-link">
-                                    <p>Log out</p>
+                                    <p>Cerrar sesión</p>
                                 </a>
                             </li>
                         </ul>
@@ -60,7 +64,6 @@
                     </a>
                 </li>
 
-                <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -79,7 +82,7 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Categorias</p>
+                                <p>Categorías</p>
                             </a>
                         </li>
                     </ul>
@@ -116,9 +119,9 @@
                         </p>
                     </a>
                 </li>
-            <!-- Cierre Usuario Promedio -->
+            <!-- Cierre de usuario promedio -->
 
-            <!-- Confidencial (solo administrador) -->
+            <!-- Confidencial (solo para administradores) -->
                 <?php
                     if ($tipo_usuario == 1) {
                 ?>
@@ -155,7 +158,6 @@
     </div>
     <!-- /.sidebar -->
 </aside>
-
 
 <!-- Posible buscador -->
 <!-- SidebarSearch Form 

@@ -1,9 +1,9 @@
-<!-- Main Footer -->
+<!-- Pie de página principal -->
 <footer class="main-footer">
-    <!-- To the right -->
+    <!-- Derecha -->
     <div class="float-right d-none d-sm-inline">
-        Whatever you want
+        Lo que desees
     </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2023 <a href="#">FisTeam</a>.</strong> Todos los derechos reservados.
+    <!-- Izquierda -->
+    <strong>Derechos de autor &copy; 2023 <a href="#">FisTeam</a>.</strong> Todos los derechos reservados.
 </footer>

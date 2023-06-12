@@ -7,18 +7,22 @@
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        
         <!-- Font Awesome Icons -->
         <link rel="stylesheet" href="vista/assets/plugins/fontawesome-free/css/all.min.css">
-        <!-- Theme style -->
+        
+        <!-- Estilo del tema -->
         <link rel="stylesheet" href="vista/assets/dist/css/adminlte.min.css">
-        <link rel="stylesheet" href="vista/assets/dist/css/stylecrud.css">
+        <link rel="stylesheet" href="vista/assets/dist/css/crudstyle.css">
     </head>
     <body class="hold-transition sidebar-mini">
+        
+        <!-- wrapper -->
         <div class="wrapper">
             <?php include "modulos/navbar.php"; ?>
             <?php include "modulos/aside.php"; ?>
 
-            <!-- Content Wrapper. Contains page content -->
+            <!-- Contenedor de contenido. Contiene el contenido de la página -->
             <div class="content-wrapper">
                 <?php include "vista/dashboard.php" ?>
             </div>
@@ -33,6 +37,8 @@
         <script src="vista/assets/dist/js/adminlte.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
+            
+            // Función para cargar contenido dinámicamente
             function CargarContenido(pagina_php, contenedor) {
                 $("." + contenedor).load(pagina_php);
             }

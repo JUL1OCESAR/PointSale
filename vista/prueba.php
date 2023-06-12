@@ -1,3 +1,5 @@
+<!-- ESTA PAGINA PHP NO SIRVE ES SOLO DE PRUEBA -->
+
 <?php
     include("../controlador/conexion.php");
     $con = connection();
