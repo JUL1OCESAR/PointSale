@@ -86,11 +86,35 @@
             data: formData,
             success: function(response) {
                 console.log(response);
-                cargarUsuarios();                            
+                cargarUsuarios();
+                cerrarPopup();                        
             },
             error: function(xhr, status, error) {
                 console.log(xhr.responseText);
             }
         });
+    }
+    function eliminarUsuario(id) {
+        var confirmation = confirm("¿Estás seguro de que deseas eliminar este usuario?");
+
+        if (confirmation) {
+            var formData = {
+                action: 'delete',
+                id: id
+            };
+
+            $.ajax({
+                url: 'controlador/crud_function.php',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    console.log(response);
+                    cargarUsuarios();
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
     }
 </script>

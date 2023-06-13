@@ -18,6 +18,11 @@
             // Llama a la función edit() para realizar la inserción
             edit();
         }
+        else if ($_POST["action"] == "delete"){
+            
+            // Llama a la función edit() para realizar la inserción
+            delete();
+        }
     }
 
     // Definición de la función insert()
@@ -48,7 +53,7 @@
             echo "Error en la inserción: " . mysqli_error($con);
         }
     }
-    
+
     // Definición de la función edit()
     function edit(){
         
@@ -74,6 +79,24 @@
             echo "Actualización Exitosa";
         } else {
             echo "Error en la actualización: " . mysqli_error($con);
+        }
+    }
+    function delete(){
+        // Se establece la conexión con la base de datos utilizando la función connection()
+        $con = connection();
+
+        // Se obtiene el ID del usuario a eliminar enviado por el método POST
+        $id = $_POST["id"];
+
+        // Se construye la consulta SQL para eliminar el usuario de la tabla "usuarios"
+        $sql = "DELETE FROM usuarios WHERE id='$id'";
+
+        // Se ejecuta la consulta utilizando la función mysqli_query()
+        // Si la eliminación es exitosa, se muestra un mensaje de éxito. De lo contrario, se muestra un mensaje de error
+        if (mysqli_query($con, $sql)) {
+            echo "Eliminación Exitosa";
+        } else {
+            echo "Error en la eliminación: " . mysqli_error($con);
         }
     }
 ?>

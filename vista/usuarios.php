@@ -135,17 +135,13 @@
                         tipo_usuario: tipoUsuario
                     };
                     editarUsuario(id, data);
-                }                
-
-                function eliminarUsuario(id) {
-
-                }
-
+                }              
+                      
                 function cerrarPopup() {
                     document.getElementById("editUser").style.display = "none";
                 }
                 
-                // Función para cerrar el ModelCreate
+                // Función para cerrar el ModelEdit
                 var closeButtons = document.getElementsByClassName("close");
                 for (var i = 0; i < closeButtons.length; i++) {
                     closeButtons[i].addEventListener("click", function() {
