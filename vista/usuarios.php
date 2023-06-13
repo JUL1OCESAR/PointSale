@@ -113,9 +113,12 @@
                     document.getElementById("editApellido").value = apellido;
                     document.getElementById("editTipoUsuario").value = tipoUsuario;
                     document.getElementById("editUser").style.display = "block";
+
+                    document.getElementById("editForm").setAttribute("data-id", id);
                 }
 
                 function guardarCambios() {
+                    var id = document.getElementById("editForm").getAttribute("data-id");
                     var usuario = document.getElementById("editUsuario").value;
                     var password = document.getElementById("editPassword").value;
                     var nombre = document.getElementById("editNombre").value;
@@ -124,44 +127,44 @@
                     
                     // Objeto con los datos a enviar al servidor
                     var data = {
-                        id: id, // Debes obtener el ID del usuario que estás editando
+                        id: id, // ID del usuario que estás editando
                         usuario: usuario,
                         password: password,
                         nombre: nombre,
                         apellido: apellido,
-                        tipoUsuario: tipoUsuario
+                        tipo_usuario: tipoUsuario
                     };
-
-                    // Realizar la llamada Ajax al servidor
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            // Aquí puedes manejar la respuesta del servidor si es necesario
-                            // Por ejemplo, puedes mostrar un mensaje de éxito
-                            alert("Los cambios se guardaron correctamente.");
-                            cerrarPopup();
-                        }
-                    };
-                    xhttp.open("POST", "guardar_cambios.php", true); // Reemplaza "guardar_cambios.php" con la URL del script en tu servidor que procesará los cambios
-                    xhttp.setRequestHeader("Content-type", "application/json");
-                    xhttp.send(JSON.stringify(data));
-                    cerrarPopup();
-                }
-
-                function cerrarPopup() {
-                    document.getElementById("editUser").style.display = "none";
-                }
+                    editarUsuario(id, data);
+                }                
 
                 function eliminarUsuario(id) {
 
                 }
 
-                document.addEventListener("click", function (event) {
-                    var targetElement = event.target;
-                    if (!targetElement.closest(".popup-content") && !targetElement.closest(".user-edit")) {
+                function cerrarPopup() {
+                    document.getElementById("editUser").style.display = "none";
+                }
+                
+                // Función para cerrar el ModelCreate
+                var closeButtons = document.getElementsByClassName("close");
+                for (var i = 0; i < closeButtons.length; i++) {
+                    closeButtons[i].addEventListener("click", function() {
                         cerrarPopup();
-                    }
+                    });
+                }
+
+                // Evento de click fuera del formulario para cerrar el ModelCreate
+                window.addEventListener("click", function(event) {
+                var editPopup = document.getElementById("editUser");
+                if (event.target == editPopup) {
+                    cerrarPopup();
+                }
                 });
+                
+                // Funcion para cerrar el formulario con boton cancelar
+                function cerrarFormulario() {
+                    var editPopup = document.getElementById("editUser").style.display = "none";
+                }
             </script>
             
             <!-- Mostrar Crud de usuarios -->
