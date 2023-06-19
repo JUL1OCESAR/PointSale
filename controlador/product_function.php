@@ -32,18 +32,19 @@
         $con = connection();
 
         // Se obtienen los datos del formulario enviados por el método POST
-        $id = null;                     // Variable autoincremental
-        $usuario = $_POST["usuario"];
-        $password = $_POST["password"];
-        $nombre = $_POST["nombre"];
-        $apellido = $_POST["apellido"];
-        $tipo_usuario = $_POST["tipo_usuario"];
+        $idProducto = null;                     // Variable autoincremental
+        $codProducto = $_POST["codProducto"];
+        $nomProducto = $_POST["nomProducto"];
+        $precioVentaProducto = floatval($_POST["precioVentaProducto"]);
+        $precioCompraProducto = floatval($_POST["precioCompraProducto"]);
+        $utilidadProducto = $precioVentaProducto - $precioCompraProducto;
+        $existenciaProducto = floatval($_POST["existenciaProducto"]);
 
         // Validaciones antes de la inserción
 
         // Se construye la consulta SQL para insertar los datos en la tabla "usuarios"
-        $sql = "INSERT INTO usuarios (usuario, password, nombre, apellido, tipo_usuario) 
-                VALUES ('$usuario', '$password', '$nombre', '$apellido', '$tipo_usuario')";
+        $sql = "INSERT INTO productos (codProducto, nomProducto, precioVentaProducto, precioCompraProducto, utilidadProducto, existenciaProducto) 
+                VALUES ('$codProducto', '$nomProducto', '$precioVentaProducto', '$precioCompraProducto', '$utilidadProducto', '$existenciaProducto')";
         
         // Se ejecuta la consulta utilizando la función mysqli_query()
         // Si la inserción es exitosa, se muestra un mensaje de éxito. De lo contrario, se muestra un mensaje de error
@@ -61,20 +62,17 @@
         $con = connection();
 
         // Se obtienen los datos del formulario enviados por el método POST
-        $id = $_POST["id"];
-        $usuario = $_POST["editUsuario"];
-        $password = $_POST["editPassword"];
-        $nombre = $_POST["editNombre"];
-        $apellido = $_POST["editApellido"];
-        $tipo_usuario = $_POST["editTipoUsuario"];
-
-        // Validaciones antes de la actualización
-
-        // Se construye la consulta SQL para actualizar los datos en la tabla "usuarios"
-        $sql = "UPDATE usuarios SET usuario='$usuario', password='$password', nombre='$nombre', apellido='$apellido', tipo_usuario='$tipo_usuario' WHERE id='$id'";
+        $idProducto = $_POST["idProducto"];
+        $codProducto = $_POST["editCodProducto"];
+        $nomProducto = $_POST["editNomProducto"];
+        $precioVentaProducto = floatval($_POST["editPrecioVentaProducto"]);
+        $precioCompraProducto = floatval($_POST["editPrecioCompraProducto"]);
+        $utilidadProducto = $precioVentaProducto - $precioCompraProducto;
+        $existenciaProducto = floatval($_POST["editExistenciaProducto"]);
         
-        // Se ejecuta la consulta utilizando la función mysqli_query()
-        // Si la actualización es exitosa, se muestra un mensaje de éxito. De lo contrario, se muestra un mensaje de error
+        // Consulta SQL para actualizar
+        $sql = "UPDATE productos SET codProducto='$codProducto', nomProducto='$nomProducto', precioVentaProducto='$precioVentaProducto', precioCompraProducto='$precioCompraProducto', utilidadProducto='$utilidadProducto', existenciaProducto='$existenciaProducto' WHERE idProducto='$idProducto'";
+        
         if(mysqli_query($con, $sql)){
             echo "Actualización Exitosa";
         } else {
@@ -82,17 +80,14 @@
         }
     }
     function delete(){
-        // Se establece la conexión con la base de datos utilizando la función connection()
         $con = connection();
 
-        // Se obtiene el ID del usuario a eliminar enviado por el método POST
-        $id = $_POST["id"];
+        // ID del usuario a eliminar
+        $idProducto = $_POST["idProducto"];
 
-        // Se construye la consulta SQL para eliminar el usuario de la tabla "usuarios"
-        $sql = "DELETE FROM usuarios WHERE id='$id'";
+        // Consulta SQL
+        $sql = "DELETE FROM productos WHERE idProducto='$idProducto'";
 
-        // Se ejecuta la consulta utilizando la función mysqli_query()
-        // Si la eliminación es exitosa, se muestra un mensaje de éxito. De lo contrario, se muestra un mensaje de error
         if (mysqli_query($con, $sql)) {
             echo "Se Elimino Exitosamente";
         } else {

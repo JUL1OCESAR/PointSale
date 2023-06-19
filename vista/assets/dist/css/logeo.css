@@ -16,6 +16,7 @@ body {
 /* Contenedor del formulario */
 form {
     width: 400px;
+    height: 500px;
     margin: 100px auto 300px auto;
     padding: 30px;
     background-color: #fff;
@@ -40,7 +41,7 @@ h1 {
 
 /* Campos de entrada */
 p {
-    margin-bottom: 20px;
+    margin: 12px 0px 0px 0px;
 }
 
 input[type="text"],
@@ -49,6 +50,7 @@ input[type="password"] {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin: 10px 0px 10px 0px;
 }
 
 /* Enlace de recuperación de contraseña */
@@ -72,10 +74,18 @@ a {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    margin: 20px 0px 20px 0px;
 }
 
 .btn:hover {
     background-color: #1e6091;
+}
+
+/* Errores */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 /* Animación */

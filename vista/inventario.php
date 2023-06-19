@@ -9,7 +9,7 @@
     session_start();
     
     // Se realiza la consulta para obtener todos los usuarios
-    $sql = "SELECT * FROM usuarios";
+    $sql = "SELECT * FROM productos";
     $query = mysqli_query($con, $sql);
 ?>
 
@@ -26,119 +26,125 @@
                 <button id="openCreateButton">Crear Producto</button>
             </div>
             
-            <!-- ModelCreate para crear producto -->
-            <div id="createUser" class="modelCreate">
+            <!-- productCreate para crear producto -->
+            <div id="createProduct" class="productCreate">
                 <div class="user-form">                    
                     <div class="user-content">
                         <span class="close">&times;</span>
                         <h1 class="tittle-form">Crear producto</h1>
-                        <form autocomplete="off" id="crudUser" action="" method="post">
-                            <input type="text" id="usuario" placeholder="Usuario">
-                            <input type="password" id="password" placeholder="Contraseña">
-                            <input type="text" id="nombre" placeholder="Nombre">
-                            <input type="text" id="apellido" placeholder="Apellido">
-                            <input type="text" id="tipo_usuario" placeholder="Tipo de Usuario">
+                        <form autocomplete="off" id="createForm" action="" method="post">
+                            <input type="text" id="codProducto" placeholder="Codigo">
+                            <input type="text" id="nomProducto" placeholder="Nombre">
+                            <input type="text" id="precioCompraProducto" placeholder="Precio de venta">
+                            <input type="text" id="precioVentaProducto" placeholder="Precio de compra">
+                            <input type="text" id="existenciaProducto" placeholder="Existencias">
                             <button type="button" onclick="enviarFormulario();">Confirmar</button>
                             <button type="button" onclick="cerrarFormulario()">Cancelar</button>
                         </form>
-                        <?php require "../controlador/crud_script.php"; ?>
+                        <?php require "../controlador/product_script.php"; ?>
                     </div>
                 </div>
             </div>
+            <style>
+            .productCreate { display: none; position: fixed; z-index: 50; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4); } 
+            </style>
 
             <!-- ModelEdit para editar producto -->
-            <div id="editUser" class="editPopup">
+            <div id="editProduct" class="editPopup">
                 <div class="user-form">
                     <div class="user-content">
                         <span class="close">&times;</span>
                         <h1 class="tittle-form">Editar usuario</h1>
-                        <form autocomplete="off" id="editForm" action="" method="post">
-                            <input type="text" id="editUsuario" placeholder="Usuario">
-                            <input type="password" id="editPassword" placeholder="Contraseña">
-                            <input type="text" id="editNombre" placeholder="Nombre">
-                            <input type="text" id="editApellido" placeholder="Apellido">
-                            <input type="text" id="editTipoUsuario" placeholder="Tipo de Usuario">
+                        <form autocomplete="off" id="editFormPro" action="" method="post">
+                            <input type="text" id="editCodProducto" placeholder="Codigo de Producto">
+                            <input type="text" id="editNomProducto" placeholder="Nombre de Producto">
+                            <input type="text" id="editPrecioCompraProducto" placeholder="Precio de Compra">
+                            <input type="text" id="editPrecioVentaProducto" placeholder="Precio de Venta">
+                            <input type="text" id="editExistenciaProducto" placeholder="Existencias Disponibles">
                             <button type="button" onclick="guardarCambios()">Guardar</button>
-                            <button type="button" onclick="cerrarFormulario()">Cancelar</button>
-                        </form>                        
+                            <button type="button" onclick="cerrarFormulario2()">Cancelar</button>
+                        </form>                    
                     </div>
                 </div>
             </div>     
 
-            <!-- Funciones para ModelCreate -->
+            <!-- Funciones para productCreate -->
             <script> 
                 
-                // Función para abrir el ModelCreate
+                // Función para abrir el productCreate
                 var openCreateButton = document.getElementById("openCreateButton");
                 openCreateButton.addEventListener("click", function() {
-                var modelCreate = document.getElementById("createUser");
-                modelCreate.style.display = "block";
+                var productCreate = document.getElementById("createProduct");
+                productCreate.style.display = "block";
                 });
 
-                // Función para cerrar el ModelCreate
+                // Función para cerrar el productCreate
                 var closeButtons = document.getElementsByClassName("close");
                 for (var i = 0; i < closeButtons.length; i++) {
                 closeButtons[i].addEventListener("click", function() {
-                    var modelCreate = document.getElementById("createUser");
-                    modelCreate.style.display = "none";
+                    var productCreate = document.getElementById("createProduct");
+                    productCreate.style.display = "none";
                 });
                 }
                 
-                // Evento de click fuera del formulario para cerrar el ModelCreate
+                // Evento de click fuera del formulario para cerrar el productCreate
                 window.addEventListener("click", function(event) {
-                var modelCreate = document.getElementById("createUser");
-                if (event.target == modelCreate) {
-                    modelCreate.style.display = "none";
+                var productCreate = document.getElementById("createProduct");
+                if (event.target == productCreate) {
+                    productCreate.style.display = "none";
                 }
                 });
                 
                 // Funcion para cerrar el formulario con boton cancelar
                 function cerrarFormulario() {
-                    var modelCreate = document.getElementById("createUser").style.display = "none";
+                    var productCreate = document.getElementById("createProduct").style.display = "none";
                 }
             </script>
 
             <!-- Funciones para ModelEdit -->
             <script>
-                function mostrarEditar(id) {
-                    var usuario = document.querySelector('.user-username[data-id="' + id + '"]').innerText;
-                    var password = document.querySelector('.user-password[data-id="' + id + '"]').innerText;
-                    var nombre = document.querySelector('.user-name[data-id="' + id + '"]').innerText;
-                    var apellido = document.querySelector('.user-lastname[data-id="' + id + '"]').innerText;
-                    var tipoUsuario = document.querySelector('.user-type[data-id="' + id + '"]').innerText;
+                function mostrarEditar(idProducto) {
+                    var codProducto = document.querySelector('.product-codigo[data-id="' + idProducto + '"]').innerText;
+                    var nomProducto = document.querySelector('.product-nombre[data-id="' + idProducto + '"]').innerText;
+                    var precioCompraProducto = document.querySelector('.product-compra[data-id="' + idProducto + '"]').innerText;
+                    var precioVentaProducto = document.querySelector('.product-venta[data-id="' + idProducto + '"]').innerText;
+                    var existenciaProducto = document.querySelector('.product-existencia[data-id="' + idProducto + '"]').innerText;
+                    document.getElementById("editCodProducto").value = codProducto;
+                    document.getElementById("editNomProducto").value = nomProducto;
+                    document.getElementById("editPrecioCompraProducto").value = precioVentaProducto;
+                    document.getElementById("editPrecioVentaProducto").value = precioCompraProducto;
+                    document.getElementById("editExistenciaProducto").value = existenciaProducto;
+                    document.getElementById("editProduct").style.display = "block";
 
-                    document.getElementById("editUsuario").value = usuario;
-                    document.getElementById("editPassword").value = password;
-                    document.getElementById("editNombre").value = nombre;
-                    document.getElementById("editApellido").value = apellido;
-                    document.getElementById("editTipoUsuario").value = tipoUsuario;
-                    document.getElementById("editUser").style.display = "block";
-
-                    document.getElementById("editForm").setAttribute("data-id", id);
+                    document.getElementById("editFormPro").setAttribute("data-id", idProducto);
                 }
 
                 function guardarCambios() {
-                    var id = document.getElementById("editForm").getAttribute("data-id");
-                    var usuario = document.getElementById("editUsuario").value;
-                    var password = document.getElementById("editPassword").value;
-                    var nombre = document.getElementById("editNombre").value;
-                    var apellido = document.getElementById("editApellido").value;
-                    var tipoUsuario = document.getElementById("editTipoUsuario").value;
+                    var idProducto = document.getElementById("editFormPro").getAttribute("data-id");
+                    var codProducto = document.getElementById("editCodProducto").value;
+                    var nomProducto = document.getElementById("editNomProducto").value;
+                    var precioCompraProducto = document.getElementById("editPrecioVentaProducto").value;
+                    var precioVentaProducto = document.getElementById("editPrecioCompraProducto").value;
                     
+                    // Cálculo de la utilidad del producto
+                    var utilidadProducto = precioVentaProducto - precioCompraProducto;
+                    var existenciaProducto = document.getElementById("editExistenciaProducto").value;
+                                        
                     // Objeto con los datos a enviar al servidor
                     var data = {
-                        id: id, // ID del usuario que estás editando
-                        usuario: usuario,
-                        password: password,
-                        nombre: nombre,
-                        apellido: apellido,
-                        tipo_usuario: tipoUsuario
+                        idProducto: idProducto, // ID del usuario que estás editando
+                        codProducto: codProducto,
+                        nomProducto: nomProducto,
+                        precioCompraProducto: precioCompraProducto,
+                        precioVentaProducto: precioVentaProducto,
+                        utilidadProducto: utilidadProducto,
+                        existenciaProducto: existenciaProducto
                     };
-                    editarUsuario(id, data);
+                    editarProducto(idProducto, data);
                 }              
                       
                 function cerrarPopup() {
-                    document.getElementById("editUser").style.display = "none";
+                    document.getElementById("editProduct").style.display = "none";
                 }
                 
                 // Función para cerrar el ModelEdit
@@ -151,15 +157,15 @@
 
                 // Evento de click fuera del formulario para cerrar el ModelCreate
                 window.addEventListener("click", function(event) {
-                var editPopup = document.getElementById("editUser");
+                var editPopup = document.getElementById("editProduct");
                 if (event.target == editPopup) {
                     cerrarPopup();
                 }
                 });
                 
                 // Funcion para cerrar el formulario con boton cancelar
-                function cerrarFormulario() {
-                    var editPopup = document.getElementById("editUser").style.display = "none";
+                function cerrarFormulario2() {
+                    var editPopup = document.getElementById("editProduct").style.display = "none";
                 }
             </script>
             
@@ -170,29 +176,31 @@
                         <tr>
                             <th>ID</th>
                             <th>Código</th>
-                            <th>Descripción</th>
+                            <th>Producto</th>
                             <th>Precio de Compra</th>
                             <th>Precio de Venta</th>
+                            <th>Utilidad</th>
                             <th>Existencia</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody id="CargaUser">
+                    <tbody id="cargaProduct">
                         <?php while ($row = mysqli_fetch_array($query)): ?>
                         <tr>
-                            <td class="user-id" data-id="<?= $row['id'] ?>"><?= $row['id'] ?></td>
-                            <td class="user-username" data-id="<?= $row['id'] ?>"><?= $row['usuario'] ?></td>
-                            <td class="user-password" data-id="<?= $row['id'] ?>"><?= $row['password'] ?></td>
-                            <td class="user-name" data-id="<?= $row['id'] ?>"><?= $row['nombre'] ?></td>
-                            <td class="user-lastname" data-id="<?= $row['id'] ?>"><?= $row['apellido'] ?></td>
-                            <td class="user-type" data-id="<?= $row['id'] ?>"><?= $row['tipo_usuario'] ?></td>
+                            <td class="product-id" data-id="<?= $row['idProducto'] ?>"><?= $row['idProducto'] ?></td>
+                            <td class="product-codigo" data-id="<?= $row['idProducto'] ?>"><?= $row['codProducto'] ?></td>
+                            <td class="product-nombre" data-id="<?= $row['idProducto'] ?>"><?= $row['nomProducto'] ?></td>
+                            <td class="product-compra" data-id="<?= $row['idProducto'] ?>"><?= $row['precioCompraProducto'] ?></td>
+                            <td class="product-venta" data-id="<?= $row['idProducto'] ?>"><?= $row['precioVentaProducto'] ?></td>
+                            <td class="product-utilidad" data-id="<?= $row['idProducto'] ?>"><?= $row['utilidadProducto'] ?></td>
+                            <td class="product-existencia" data-id="<?= $row['idProducto'] ?>"><?= $row['existenciaProducto'] ?></td>
                             
                             <!-- Botón Editar -->
-                            <td class="user-edit"><button onclick="mostrarEditar(<?= $row['id'] ?>);">Editar</button></td>
+                            <td class="product-edit"><button onclick="mostrarEditar(<?= $row['idProducto'] ?>);">Editar</button></td>
                             
                             <!-- Botón Eliminar -->
-                            <td class="user-delete"><button onclick="eliminarUsuario(<?= $row['id'] ?>);">Eliminar</button></td>
+                            <td class="product-delete"><button onclick="eliminarUsuario(<?= $row['idProducto'] ?>);">Eliminar</button></td>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>

@@ -17,32 +17,41 @@
     // Verifica si se envió el formulario
     if ($_POST) {
         $usuario = $_POST['usuario'];
-        $password = $_POST['password'];
-        
-        // Consulta SQL para obtener el usuario ingresado
-        $sql = "SELECT id, password, nombre, tipo_usuario FROM usuarios WHERE usuario = '$usuario'";
-        
-        // Ejecuta la consulta en la conexión establecida
-        $resultado = $con->query($sql);
-        $num = $resultado->num_rows;
-        
-        // Verifica si se encontró un usuario con el nombre ingresado
-        if ($num > 0) {
-            $row = $resultado->fetch_assoc();
-            $password_bd = $row['password'];
-            $pass_c = $password;
+        $password = $_POST['password'];        
+        $errors = array();
+        if (empty($usuario)) {
+            $errors['usuario'] = "Por favor, ingresa el usuario.";
+        }
+    
+        if (empty($password)) {
+            $errors['password'] = "Por favor, ingresa la contraseña.";
+        }
+        else {
+            // Consulta SQL para obtener el usuario ingresado
+            $sql = "SELECT id, password, nombre, tipo_usuario FROM usuarios WHERE usuario = '$usuario'";
             
-            // Verifica si la contraseña ingresada coincide con la almacenada en la base de datos
-            if ($password_bd == $pass_c) {
-                $_SESSION['id'] = $row['id'];
-                $_SESSION['nombre'] = $row['nombre'];
-                $_SESSION['tipo_usuario'] = $row['tipo_usuario'];
-                header("Location: ../index.php");
+            // Ejecuta la consulta en la conexión establecida
+            $resultado = $con->query($sql);
+            $num = $resultado->num_rows;
+            
+            // Verifica si se encontró un usuario con el nombre ingresado
+            if ($num > 0) {
+                $row = $resultado->fetch_assoc();
+                $password_bd = $row['password'];
+                $pass_c = $password;
+                
+                // Verifica si la contraseña ingresada coincide con la almacenada en la base de datos
+                if ($password_bd == $pass_c) {
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['nombre'] = $row['nombre'];
+                    $_SESSION['tipo_usuario'] = $row['tipo_usuario'];
+                    header("Location: ../index.php");
+                } else {
+                    echo "Contraseña no coincide";
+                }
             } else {
-                echo "Contraseña no coincide";
+                echo "No existe usuario";
             }
-        } else {
-            echo "No existe usuario";
         }
     }
 ?>
@@ -72,9 +81,23 @@
                 <img src="../vista/assets/dist/img/avatar.png" class="imagenv">
                 <h1 class="animate__animated animate__backInLeft">BIENVENIDO</h1>
                 <p>Usuario <input type="text" placeholder="ingrese su usuario" name="usuario"></p>
-                <p>Contraseña <input type="password" placeholder="ingrese su contraseña" name="password"></p>
-                <a href="restablecer.php">Olvidé mi contraseña</a> <br>
                 
+                <?php
+                    // Verifica si hay un error de validación para el campo de usuario
+                    if (isset($errors['usuario'])) {
+                        echo '<span class="error-message">' . $errors['usuario'] . '</span>';
+                    }
+                ?>
+                                
+                <p>Contraseña <input type="password" placeholder="ingrese su contraseña" name="password"></p>
+                                
+                <?php
+                    // Verifica si hay un error de validación para el campo de contraseña
+                    if (isset($errors['password'])) {
+                        echo '<span class="error-message">' . $errors['password'] . '</span>';
+                    }
+                ?>                
+
                 <!-- Botón de envío del formulario -->
                 <button type="submit" class="btn">
                     Ingresar

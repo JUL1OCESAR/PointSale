@@ -2,17 +2,17 @@
 <script type="text/javascript">
     $(document).ready(function() {
         
-        // Esta función se ejecuta cuando el documento FORM DE INSERTAR ha sido completamente cargado y listo
+        // Se ejecuta cuando el documento FORM DE INSERTAR ha sido completamente cargado y listo
         $('#crudUser').submit(function(event) {
             event.preventDefault(); // Evitar el envío del formulario por defecto
             enviarFormulario(); // Llama a la función enviarFormulario() cuando se envía el formulario
         });
 
-        // Esta función se ejecuta cuando el documento FORM DE EDITAR ha sido completamente cargado y listo
+        // Se ejecuta cuando el documento FORM DE EDITAR ha sido completamente cargado y listo
         $('#editForm').submit(function(event) {
             event.preventDefault();
-            var id = $(this).attr("data-id"); // ID del usuario que deseas editar
-            editarUsuario(id); // Llama a la función editarFormulario() cuando se envía el formulario
+            var id = $(this).attr("data-id"); // ID del usuario a editar
+            editarUsuario(id);
         });
     });
 
@@ -38,19 +38,49 @@
 
     function enviarFormulario() {
         
-        // Crea un objeto formData con los valores del formulario
-        var formData = {
-            action: 'insert',
-            usuario: $("#usuario").val(),
-            password: $("#password").val(),
-            nombre: $("#nombre").val(),
-            apellido: $("#apellido").val(),
-            tipo_usuario: $("#tipo_usuario").val()
-        };
+        // Crea un objeto con los valores del formulario
+        var usuario = $("#usuario").val();
+        var password = $("#password").val();
+        var nombre = $("#nombre").val();
+        var apellido = $("#apellido").val();
+        var tipoUsuario = $("#tipo_usuario").val();
+        
+        // Validación de campos requeridos
+        if (usuario.trim() === "" || password.trim() === "" || nombre.trim() === "" || apellido.trim() === "" || tipoUsuario.trim() === "") {
+            alert("Todos los campos son obligatorios");
+            return;
+        }
+
+        // Validación de longitud mínima
+        if (password.length < 8) {
+            alert("La contraseña debe tener al menos 8 caracteres");
+            return;
+        }
+
+        var passwordRegex = /^(?=.*[A-ZÑñ])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&ñÑ]{8,}$/;
+        if (!passwordRegex.test(password)) {
+            alert("La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial");
+            return;
+        }
+        
+        if (tipoUsuario != 1 && tipoUsuario != 2) {
+            alert("El tipo de Usuario debe ser 1 o 2");
+            return;
+        }
 
         // Realiza una solicitud AJAX al servidor para insertar los datos del formulario
+        var formData = {
+            action: 'insert',
+            usuario: usuario,
+            password: password,
+            nombre: nombre,
+            apellido: apellido,
+            tipo_usuario: tipoUsuario
+        };
+        
+        // Realiza una solicitud AJAX al servidor para insertar los datos del formulario
         $.ajax({
-            url: 'controlador/crud_function.php', // URL del archivo PHP que realiza la inserción
+            url: 'controlador/crud_function.php',
             type: 'POST',
             data: formData,
             success: function(response) {
@@ -69,6 +99,7 @@
         });
     }
     function editarUsuario(id) {
+        
         var formData = {
             action: 'edit',
             id: id,

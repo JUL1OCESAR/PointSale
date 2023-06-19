@@ -29,7 +29,7 @@
         <nav class="mt-2">
 
             <!-- Usuario promedio -->
-            <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <li class="nav-item">

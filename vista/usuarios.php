@@ -38,8 +38,10 @@
                             <input type="text" id="nombre" placeholder="Nombre">
                             <input type="text" id="apellido" placeholder="Apellido">
                             <input type="text" id="tipo_usuario" placeholder="Tipo de Usuario">
-                            <button type="button" onclick="enviarFormulario();">Confirmar</button>
-                            <button type="button" onclick="cerrarFormulario()">Cancelar</button>
+                            <div class="boton">
+                                <button type="button" onclick="enviarFormulario();">Confirmar</button>
+                                <button type="button" onclick="cerrarFormulario()">Cancelar</button>
+                            </div>
                         </form>
                         <?php require "../controlador/crud_script.php"; ?>
                     </div>
@@ -58,8 +60,11 @@
                             <input type="text" id="editNombre" placeholder="Nombre">
                             <input type="text" id="editApellido" placeholder="Apellido">
                             <input type="text" id="editTipoUsuario" placeholder="Tipo de Usuario">
-                            <button type="button" onclick="guardarCambios()">Guardar</button>
-                            <button type="button" onclick="cerrarFormulario()">Cancelar</button>
+                            <div class="boton">
+                                <button type="button" onclick="guardarCambios()">Guardar</button>
+                                <button type="button" onclick="cerrarFormulario2()">Cancelar</button>
+                            </div>
+                            <style>.boton{display: flex; width: 100%; flex-direction: row-reverse; justify-content: flex-start;}  .user-content button{margin: 0px 0px 0px 15px} </style>
                         </form>                        
                     </div>
                 </div>
@@ -125,6 +130,29 @@
                     var apellido = document.getElementById("editApellido").value;
                     var tipoUsuario = document.getElementById("editTipoUsuario").value;
                     
+                    // Validación de campos requeridos
+                    if (usuario.trim() === "" || password.trim() === "" || nombre.trim() === "" || apellido.trim() === "" || tipoUsuario.trim() === "") {
+                        alert("Todos los campos son obligatorios");
+                        return;
+                    }
+
+                    // Validación de longitud mínima
+                    if (password.length < 8) {
+                        alert("La contraseña debe tener al menos 8 caracteres");
+                        return;
+                    }
+
+                    var passwordRegex = /^(?=.*[A-ZÑñ])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&ñÑ]{8,}$/;
+                    if (!passwordRegex.test(password)) {
+                        alert("La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial");
+                        return;
+                    }
+
+                    if (tipoUsuario != 1 && tipoUsuario != 2) {
+                        alert("El tipo de Usuario debe ser 1 o 2");
+                        return;
+                    }
+
                     // Objeto con los datos a enviar al servidor
                     var data = {
                         id: id, // ID del usuario que estás editando
@@ -158,7 +186,7 @@
                 });
                 
                 // Funcion para cerrar el formulario con boton cancelar
-                function cerrarFormulario() {
+                function cerrarFormulario2() {
                     var editPopup = document.getElementById("editUser").style.display = "none";
                 }
             </script>
