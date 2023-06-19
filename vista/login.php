@@ -69,7 +69,7 @@
         
             <!-- Formulario de inicio de sesión -->
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <img src="../vista/assets/dist/img/avatar.svg" class="imagenv">
+                <img src="../vista/assets/dist/img/avatar.png" class="imagenv">
                 <h1 class="animate__animated animate__backInLeft">BIENVENIDO</h1>
                 <p>Usuario <input type="text" placeholder="ingrese su usuario" name="usuario"></p>
                 <p>Contraseña <input type="password" placeholder="ingrese su contraseña" name="password"></p>

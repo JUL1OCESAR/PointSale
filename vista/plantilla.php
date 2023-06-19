@@ -14,6 +14,23 @@
         <!-- Estilo del tema -->
         <link rel="stylesheet" href="vista/assets/dist/css/adminlte.min.css">
         <link rel="stylesheet" href="vista/assets/dist/css/crudstyle.css">
+ <!-- Ionicons -->
+ <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="vista/assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
+<!-- Jquery CSS -->
+<link rel="stylesheet" href="vista/assets/plugins/jquery-ui/jquery-ui.css">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jquery UI -->
+<script src="vistas/assets/plugins/jquery-ui/jquery-ui.js"></script>
+
+
+
     </head>
     <body class="hold-transition sidebar-mini">
         

@@ -15,7 +15,8 @@
             <a href="#" class="nav-link">Categorías</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Ventas</a>
+        <a style="cursor: pointer;" class="nav-link" onclick="CargarContenido('vista/ventas.php','content-wrapper')">
+            Ventas</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Compras</a>

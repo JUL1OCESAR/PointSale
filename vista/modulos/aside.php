@@ -88,7 +88,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a style ="cursor: pointer;" href="#" class="nav-link" onclick="CargarContenido('vista/dashboard.php', 'content-wrapper')">
+                    <a style ="cursor: pointer;" href="#" class="nav-link" onclick="CargarContenido('vista/ventas.php', 'content-wrapper')">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Ventas
