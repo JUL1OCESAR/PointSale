@@ -1,11 +1,13 @@
 <?php
     // Inicia una sesión
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
     // Redirecciona al usuario a la página de inicio de sesión si no existe la variable de sesión 'id'
     if (!isset($_SESSION['id'])) {
         header("Location: vista/login.php"); 
-    }
+    }    
 
     // Obtiene el valor de la variable de sesión 'nombre' y 'tipo_usuario' y lo asigna a su variable local
     $nombre = $_SESSION['nombre']; 
@@ -63,30 +65,6 @@
                         </p>
                     </a>
                 </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Productos
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a style ="cursor: pointer;" href="#" class="nav-link active" onclick="CargarContenido('vista/inventario.php', 'content-wrapper')">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inventario</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Categorías</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a style ="cursor: pointer;" href="#" class="nav-link" onclick="CargarContenido('vista/ventas.php', 'content-wrapper')">
                         <i class="nav-icon fas fa-th"></i>
@@ -125,6 +103,30 @@
                 <?php
                     if ($tipo_usuario == 1) {
                 ?>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Productos
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a style ="cursor: pointer;" href="#" class="nav-link active" onclick="CargarContenido('vista/inventario.php', 'content-wrapper')">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Inventario</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Categorías</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
