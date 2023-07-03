@@ -45,6 +45,15 @@
 
                     <!-- INPUT PARA INGRESO DEL CODIGO DE BARRAS O DESCRIPCION DEL PRODUCTO -->
                     <div class="col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-md-6" style="display:none;">
+                                <video id="preview"width="100%"></video>
+                            </div>
+                            <div class="col-md-6">
+                                <label>SCAN QR CODE</label>
+                                <input type="text" name="text" id="text" readonyy="" placeholder="..." class="form-control">
+                            </div>
+                        </div>
 
                         <div class="form-group mb-2">
 
@@ -60,6 +69,24 @@
                         </div>
 
                     </div>
+                    
+                    <!-- SCANNER QR -->
+                    <script>
+                        let scanner = new Instascan.Scanner({ video : document.getElementById('preview')});
+                        Instascan.Camera.getCameras().then(function(cameras){
+                            if(cameras.length > 0){
+                                scanner.start(cameras[0]);
+                            }
+                            else {
+                                alert('No hay camara');
+                            }
+                        }).catch(function(e) {
+                            console.error(e);
+                        });
+                        scanner.addListener('scan',function(c){
+                            document.getElementById('text').value=c;
+                        });
+                    </script>
 
                     <!-- ETIQUETA QUE MUESTRA LA SUMA TOTAL DE LOS PRODUCTOS AGREGADOS AL LISTADO -->
                     <div class="col-md-6 mb-3">
@@ -90,7 +117,7 @@
                                     <th>Cantidad</th>
                                     <th>Precio</th>
                                     <th>Total</th>
-                                    <th class="text-center">Opciones</th>
+                                    <th>Opciones</th>
                                     <th>Aplica Peso</th>
                                 </tr>
                             </thead>
@@ -105,7 +132,7 @@
             </div> <!-- ./ COL LADO IZQUIERDO -->
             
             <!-- COLUMNA DE 3UNDS PARA EL EMISION DEL DOCUMENTO DE VENTA (BOLETA) -->
-            <div class="col-md-3 px-2">
+            <div class="col-md-3 px-2" style="display:none;">
 
                 <div class="card shadow">
 
